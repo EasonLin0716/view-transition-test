@@ -16,8 +16,17 @@ const router = createRouter({
 })
 
 router.beforeEach((before, after, next) => {
-  document.startViewTransition(() => {
+  const viewTransition = document.startViewTransition(() => {
     next()
+  })
+  viewTransition.ready.then(() => {
+    console.log('ready resolved')
+  })
+  viewTransition.updateCallbackDone.then(() => {
+    console.log('updateCallbackDone resolved')
+  })
+  viewTransition.finished.then(() => {
+    console.log('finished resolved')
   })
 })
 
