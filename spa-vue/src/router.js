@@ -10,7 +10,15 @@ const routes = [
   { path: '/contact', component: ContactView },
 ]
 
-export const router = createRouter({
+const router = createRouter({
   history: createMemoryHistory(),
   routes,
 })
+
+router.beforeEach((before, after, next) => {
+  document.startViewTransition(() => {
+    next()
+  })
+})
+
+export default router
