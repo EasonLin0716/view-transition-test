@@ -15,18 +15,20 @@ const router = createRouter({
   routes,
 })
 
-router.beforeEach((before, after, next) => {
-  const viewTransition = document.startViewTransition(() => {
-    next()
-  })
-  viewTransition.ready.then(() => {
-    console.log('ready resolved')
-  })
-  viewTransition.updateCallbackDone.then(() => {
-    console.log('updateCallbackDone resolved')
-  })
-  viewTransition.finished.then(() => {
-    console.log('finished resolved')
+router.isReady().then(() => {
+  router.beforeEach((before, after, next) => {
+    const viewTransition = document.startViewTransition(() => {
+      next()
+    })
+    viewTransition.ready.then(() => {
+      console.log('ready resolved')
+    })
+    viewTransition.updateCallbackDone.then(() => {
+      console.log('updateCallbackDone resolved')
+    })
+    viewTransition.finished.then(() => {
+      console.log('finished resolved')
+    })
   })
 })
 
