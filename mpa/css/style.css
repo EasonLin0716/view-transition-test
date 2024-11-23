@@ -22,15 +22,19 @@
   navigation: auto;
 }
 
-::view-transition-group(root) {
+header {
+  view-transition-name: header-transition;
+}
+
+::view-transition-group(header-transition) {
   animation-duration: 0.5s;
 }
 
-::view-transition-old(root)  {
+::view-transition-old(header-transition)  {
   animation-name: move-out;
 }
 
-::view-transition-new(root) {
+::view-transition-new(header-transition) {
   animation-name: move-in;
 }
 
