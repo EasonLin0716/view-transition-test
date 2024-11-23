@@ -1,6 +1,13 @@
 import { useNavigate } from 'react-router'
 
 function CustomLink({ to, children }) {
+  const linkStyle = {
+    color: 'blue',
+    cursor: 'pointer',
+    textDecoration: 'underline',
+    border: 'none',
+    background: 'none',
+  }
   const navigateTo = useNavigate()
   const navigate = (to) => {
     document.startViewTransition(() => {
@@ -8,9 +15,9 @@ function CustomLink({ to, children }) {
     })
   }
   return (
-    <a href="#" className="custom-link" onClick={() => navigate(to)}>
+    <button className="custom-link" style={linkStyle} onClick={() => navigate(to)}>
       {children}
-    </a>
+    </button>
   );
 }
 
